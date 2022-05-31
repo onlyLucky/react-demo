@@ -53,4 +53,18 @@ const element = {
 React 元素创建开销是极小的普通对象，**React DOM**用来负责 DOM 的更新创建，并保持一致。<br>
 这里的元素可以简简单单当成一个组件，构成 react 的组件化<br>
 
-假设你的 HTML 文件某处有一个 <div>：
+假设你的 HTML 文件某处有一个 `<div>`：
+
+```html
+<div id="root"></div>
+```
+
+这个就是根 DOM 节点，它里面的元素是受框架控制的
+
+- 更新已渲染的元素
+
+  大多数 React 应用只会调用一次 ReactDOM.render()。
+
+- React 只更新它需要更新的部分
+
+  React DOM 会将元素和它的子元素与它们之前的状态进行比较，并只会进行必要的更新来使 DOM 达到预期的状态。
