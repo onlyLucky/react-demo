@@ -6,6 +6,13 @@
 ## 目录
 
 1. [简介](#简介)
+2. [JSX](#JSX)
+3. [元素渲染](#元素渲染)
+4. [组件&Props](#组件&Props)
+5. [JSX](#JSX)
+6. [JSX](#JSX)
+7. [JSX](#JSX)
+8. [JSX](#JSX)
 
 ## 简介
 
@@ -68,3 +75,51 @@ React 元素创建开销是极小的普通对象，**React DOM**用来负责 DOM
 - React 只更新它需要更新的部分
 
   React DOM 会将元素和它的子元素与它们之前的状态进行比较，并只会进行必要的更新来使 DOM 达到预期的状态。
+
+## 组件&Props
+
+> 组件，从概念上类似于 JavaScript 函数。它接受任意的入参（即 “props”），并返回用于描述页面展示内容的 React 元素。
+
+- 函数组件&class 组件
+
+下面是一个简单的函数组件
+
+```js
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+```
+
+函数传参 props 外界调用传递过来，返回一个 React 元素
+
+下面是一个 class 组件
+
+```js
+class WelcomeClass extends React.Component {
+  render() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+}
+```
+
+我们在`App.js`里面进行引用
+
+```js
+<Welcome name="Welcome"></Welcome>
+<WelcomeClass name="WelcomeClass"></WelcomeClass>
+```
+
+在这个过程中:
+
+- `React`调用组件传入 props-->
+- 组件返回一个 React 元素值-->
+- `React DOM`进行元素比较进行 diff 更新
+
+  > **注意：组件名称必须以大写字母开头。**
+  >
+  > 每个新的 React 应用程序的顶层组件都是 App 组件,App 组件内部由不同的组件进行搭配组合
+
+- **Props 的只读性**
+
+**所有 React 组件都必须像纯函数一样保护它们的 props 不被更改。**
+纯函数不会尝试更改入参，且多次调用下相同的入参始终返回相同的结果。
