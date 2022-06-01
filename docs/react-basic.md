@@ -165,4 +165,42 @@ class Clock extends React.Component {
 
 [生命周期结构图](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
 
-> 其中生命周期需要经历挂载-->更新-->卸载-->
+> 其中生命周期需要经历挂载-->更新-->卸载(下面加粗为常用，按照顺序进行)
+
+**挂载过程**
+
+- [**constructor()**](https://react.docschina.org/docs/react-component.html#constructor)
+- [static getDerivedStateFromProps()](https://react.docschina.org/docs/react-component.html#static-getderivedstatefromprops)
+- [**render()**](https://react.docschina.org/docs/react-component.html#render)
+- [**componentDidMount()**](https://react.docschina.org/docs/react-component.html#componentdidmount)
+
+**更新**
+
+- static getDerivedStateFromProps()
+- shouldComponentUpdate()
+- render()
+- getSnapshotBeforeUpdate()
+- [**componentDidUpdate()**](https://react.docschina.org/docs/react-component.html#componentdidupdate)
+
+**卸载**
+
+- [**componentWillUnmount()**](https://react.docschina.org/docs/react-component.html#componentwillunmount)
+
+
+**错误处理**
+> 当渲染过程，生命周期，或子组件的构造函数中抛出错误时，会调用如下方法：
+- static getDerivedStateFromError()
+- componentDidCatch()
+
+
+
+**正确地使用 State**
+
+- 不要直接修改 State
+- State 的更新可能是异步的
+```js
+this.setState((state, props) => ({
+  counter: state.counter + props.increment
+}));
+```
+- State 的更新会被合并
