@@ -5,14 +5,12 @@
 
 ## 目录
 
-1. [简介](#简介)
-2. [JSX](#JSX)
-3. [元素渲染](#元素渲染)
-4. [组件&Props](#组件&Props)
-5. [JSX](#JSX)
-6. [JSX](#JSX)
-7. [JSX](#JSX)
-8. [JSX](#JSX)
+- [目录](#目录)
+- [简介](#简介)
+- [JSX](#jsx)
+- [元素渲染](#元素渲染)
+- [组件&Props](#组件props)
+- [State&生命周期](#State&生命周期)
 
 ## 简介
 
@@ -123,3 +121,48 @@ class WelcomeClass extends React.Component {
 
 **所有 React 组件都必须像纯函数一样保护它们的 props 不被更改。**
 纯函数不会尝试更改入参，且多次调用下相同的入参始终返回相同的结果。
+
+## State&生命周期
+
+- 函数组件更改为 class 组件,props 的使用替换为 state 的使用
+
+```js
+function Clock(props) {
+  return (
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {props.date.toLocaleTimeString()}.</h2>
+    </div>
+  );
+}
+```
+
+更改为
+
+```js
+class Clock extends React.Component {
+  name = "";
+  constructor(props) {
+    super(props);
+    this.state = { date: new Date() };
+    this.name = "#####";
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!{this.name}</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+```
+
+借用`React.Component` api 使用继承，通过 constructor 接受 props，设置全局 state 对象储存自己的内部变量（props 之所以不能进行改变，纯函数的概念。state 的出现是为了添加内部环境变脸的更改，**在这个state，我们可以使用其他的变量名称，比如name**）
+
+- 生命周期方法添加
+
+[生命周期结构图](https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+
+> 其中生命周期需要经历挂载-->更新-->卸载-->
