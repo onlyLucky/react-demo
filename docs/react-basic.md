@@ -11,6 +11,7 @@
 - [元素渲染](#元素渲染)
 - [组件&Props](#组件props)
 - [State&生命周期](#State&生命周期)
+- [事件处理](#事件处理)
 
 ## 简介
 
@@ -159,7 +160,7 @@ class Clock extends React.Component {
 }
 ```
 
-借用`React.Component` api 使用继承，通过 constructor 接受 props，设置全局 state 对象储存自己的内部变量（props 之所以不能进行改变，纯函数的概念。state 的出现是为了添加内部环境变脸的更改，**在这个state，我们可以使用其他的变量名称，比如name**）
+借用`React.Component` api 使用继承，通过 constructor 接受 props，设置全局 state 对象储存自己的内部变量（props 之所以不能进行改变，纯函数的概念。state 的出现是为了添加内部环境变脸的更改，**在这个 state，我们可以使用其他的变量名称，比如 name**）
 
 - 生命周期方法添加
 
@@ -186,28 +187,100 @@ class Clock extends React.Component {
 
 - [**componentWillUnmount()**](https://react.docschina.org/docs/react-component.html#componentwillunmount)
 
-
 **错误处理**
+
 > 当渲染过程，生命周期，或子组件的构造函数中抛出错误时，会调用如下方法：
+
 - static getDerivedStateFromError()
 - componentDidCatch()
-
-
 
 **正确地使用 State**
 
 - 不要直接修改 State
 - State 的更新可能是异步的
+
 ```js
 this.setState((state, props) => ({
-  counter: state.counter + props.increment
+  counter: state.counter + props.increment,
 }));
 ```
+
 - State 的更新会被合并
 
 - 数据是向下流动的
 
 组件可以选择把它的 state 作为 props 向下传递到它的子组件中(这对于自定义组件同样适用)
+
 ```js
 <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+```
+
+## 事件处理
+
+> - React 事件的命名采用小驼峰式（camelCase），而不是纯小写。
+> - 使用 JSX 语法时你需要传入一个函数作为事件处理函数，而不是一个字符串
+
+例如，传统的 HTML：
+
+```html
+<button onclick="activateLasers()">Activate Lasers</button>
+```
+
+在 React 中略微不同：
+
+```js
+<button onClick={activateLasers}>Activate Lasers</button>
+```
+
+**React 不能通过返回 false 的方式阻止默认行为,必须显式的使用 preventDefault, `e.preventDefault()`**
+
+e 是一个合成事件,React 根据 W3C 规范来定义这些合成事件，所以你不需要担心跨浏览器的兼容性问题。
+
+```js
+lass Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {isToggleOn: true};
+
+    // 为了在回调中使用 `this`，这个绑定是必不可少的
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState(state => ({
+      isToggleOn: !state.isToggleOn
+    }));
+  }
+
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        {this.state.isToggleOn ? 'ON' : 'OFF'}
+      </button>
+    );
+  }
+}
+```
+
+如果不想使用 bind 进行更改 this 的话可以使用箭头函数
+
+```js
+handleClick = () => {
+  this.setState((state) => ({
+    isToggleOn: !state.isToggleOn,
+  }));
+};
+```
+
+onClick 回调函数也可以使用回调解决 this 的问题
+
+```js
+<button onClick={() => this.handleClick()}>Click me</button>
+```
+
+**事件如何传递参数**
+
+```js
+<button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
+<button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
 ```
