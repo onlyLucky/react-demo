@@ -204,3 +204,10 @@ this.setState((state, props) => ({
 }));
 ```
 - State 的更新会被合并
+
+- 数据是向下流动的
+
+组件可以选择把它的 state 作为 props 向下传递到它的子组件中(这对于自定义组件同样适用)
+```js
+<h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+```
