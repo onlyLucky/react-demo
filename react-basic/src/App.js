@@ -3,6 +3,7 @@
 import {Element,ElementJsx} from './jsx'
 import {Welcome,WelcomeClass} from './components'
 import {Clock} from './state'
+import {Toggle} from './event'
 function App() {
   return (
     <div className="App">
@@ -12,6 +13,7 @@ function App() {
       <Welcome name="Welcome"></Welcome>
       <WelcomeClass name="WelcomeClass"></WelcomeClass>
       <Clock></Clock>
+      <Toggle></Toggle>
     </div>
   );
 }
