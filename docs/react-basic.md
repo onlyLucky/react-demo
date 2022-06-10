@@ -15,6 +15,7 @@
 - [条件渲染](#条件渲染)
   - [阻止组件渲染](#阻止组件渲染)
 - [列表&key](#列表key)
+- [表单](#表单)
 
 ## 简介
 
@@ -325,3 +326,12 @@ function NumberList(props) {
   );
 }
 ```
+
+## 表单
+
+其实这里的功能大致和vue中的 v-model想要达到的效果一致
+
+> 表单元素（如`<input>`、 `<textarea>` 和 `<select>`）之类的表单元素通常自己维护 state，并根据用户输入进行更新
+
+
+文件标签`<input type="file">`,上传文件到服务器，可以通过使用[File API](https://developer.mozilla.org/en-US/docs/Web/API/File_API/Using_files_from_web_applications)
