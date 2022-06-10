@@ -5,6 +5,11 @@ import {Welcome,WelcomeClass} from './basic/components'
 import {Clock} from './basic/state'
 import {Toggle} from './basic/event'
 import {Greeting,LoginControl,IfPage} from './basic/if'
+import {ListLi,ListBlog} from './basic/list'
+const posts = [
+  {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
+  {id: 2, title: 'Installation', content: 'You can install React from npm.'}
+];
 function App() {
   return (
     <div className="App">
@@ -19,6 +24,9 @@ function App() {
       <Greeting isLoggedIn={true}/>
       <LoginControl/>
       <IfPage/>
+      <h3>列表</h3>
+      <ListLi/>
+      <ListBlog posts={posts}/>
     </div>
   );
 }
