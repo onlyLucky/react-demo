@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-06-10 13:48:11
  * @LastEditors: fg
- * @LastEditTime: 2022-06-10 14:49:43
+ * @LastEditTime: 2022-06-10 14:52:47
  * @Description: if
  */
 import React from 'react'
@@ -70,7 +70,7 @@ class LoginControl extends React.Component {
 
 function WarningBanner(props) {
   if (!props.warn) {
-    return null;
+    return false;
   }
 
   return (
