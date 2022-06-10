@@ -4,6 +4,7 @@ import {Element,ElementJsx} from './jsx'
 import {Welcome,WelcomeClass} from './components'
 import {Clock} from './state'
 import {Toggle} from './event'
+import {Greeting,LoginControl,IfPage} from './if'
 function App() {
   return (
     <div className="App">
@@ -14,6 +15,10 @@ function App() {
       <WelcomeClass name="WelcomeClass"></WelcomeClass>
       <Clock></Clock>
       <Toggle></Toggle>
+      <h3>条件判断</h3>
+      <Greeting isLoggedIn={true}/>
+      <LoginControl/>
+      <IfPage/>
     </div>
   );
 }
