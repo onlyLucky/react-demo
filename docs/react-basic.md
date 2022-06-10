@@ -14,6 +14,7 @@
 - [事件处理](#事件处理)
 - [条件渲染](#条件渲染)
   - [阻止组件渲染](#阻止组件渲染)
+- [列表&key](#列表key)
 
 ## 简介
 
@@ -302,3 +303,25 @@ onClick 回调函数也可以使用回调解决 this 的问题
 
 >在组件的 render 方法中返回 null 并不会影响组件的生命周期。例如，上面这个示例中，componentDidUpdate 依然会被调用
 
+## 列表&key
+
+>key 帮助 React 识别哪些元素改变了，比如被添加或删除。因此你应当给数组中的每一个元素赋予一个确定的标识。
+
+**key 只是在兄弟节点之间必须唯一**
+
+这一点上面和vue相差无几，是因为他们的dom更新渲染的diff都是一样的
+
+我们在map遍历完之后不要加`{}`,默认返回即可
+```js
+function NumberList(props) {
+  const numbers = props.numbers;
+  return (
+    <ul>
+      {numbers.map((number) =>
+        <ListItem key={number.toString()}
+                  value={number} />
+      )}
+    </ul>
+  );
+}
+```
