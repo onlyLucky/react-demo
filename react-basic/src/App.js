@@ -6,6 +6,7 @@ import {Clock} from './basic/state'
 import {Toggle} from './basic/event'
 import {Greeting,LoginControl,IfPage} from './basic/if'
 import {ListLi,ListBlog} from './basic/list'
+import {NameForm,TextareaForm,SelectForm,Reservation} from './basic/form'
 const posts = [
   {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
   {id: 2, title: 'Installation', content: 'You can install React from npm.'}
@@ -27,6 +28,11 @@ function App() {
       <h3>列表</h3>
       <ListLi/>
       <ListBlog posts={posts}/>
+      <h3>表单</h3>
+      <NameForm/>
+      <TextareaForm/>
+      <SelectForm/>
+      <Reservation/>
     </div>
   );
 }
