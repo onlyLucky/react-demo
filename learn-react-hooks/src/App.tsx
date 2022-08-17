@@ -1,11 +1,11 @@
 import React from 'react';
 import { Button } from 'antd';
+import ReactHooks from '@/iHooks/index';
 
 const App = ()=>{
   return (
     <div>
-      <h1>Hello</h1>
-      <Button>点我</Button>
+      <ReactHooks></ReactHooks>
     </div>
   )
 }
