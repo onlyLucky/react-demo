@@ -2,7 +2,7 @@
  * @Author: fg
  * @Date: 2022-08-18 17:33:02
  * @LastEditors: fg
- * @LastEditTime: 2022-08-19 15:28:43
+ * @LastEditTime: 2022-08-19 16:24:43
  * @Description: useEffect
  */
 import React, { useState, useEffect } from "react";
@@ -34,7 +34,7 @@ function DelayedEffect(props: { timerMs: number }) {
 }
 
 //
-function UseEffectAsync() {
+/* function UseEffectAsync() {
   useEffect(() => {
     (async () => {
       const { data } = await ajax(params);
@@ -46,6 +46,6 @@ function UseEffectAsync() {
       // todo
     });
   }, [params]);
-}
+} */
 
 export { UseEffectEg };
